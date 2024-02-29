@@ -13,15 +13,15 @@ namespace phase_1
     public partial class AccountLogin : Form
     {
         Main main;
-        private Dictionary<string, string> users = new Dictionary<string, string>
-        {
-            {"admin", "admin123" },
-            {"user", "user123" }
-        };
-        public AccountLogin(Main main)
+        AccountManager accountManager;
+        private Dictionary<string, string> users;
+        
+        public AccountLogin(Main main,AccountManager accountManager)
         {
             InitializeComponent();
             this.main = main;
+            this.accountManager = accountManager;
+            users = accountManager.Users;
         }
 
         private void AccountLogin_Load(object sender, EventArgs e)
@@ -40,6 +40,10 @@ namespace phase_1
                 {
                     AdminDashboard adminDashboard = new AdminDashboard();
                     adminDashboard.Show();
+                }
+                else if(accountManager.IsAccountLocked(username))
+                {
+                    MessageBox.Show("Account is locked");
                 }
                 else
                 {

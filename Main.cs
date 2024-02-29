@@ -35,7 +35,7 @@ namespace phase_1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AccountLogin accountLogin = new AccountLogin(this);
+            AccountLogin accountLogin = new AccountLogin(this, accountManager);
             accountLogin.Show();
         }
 
