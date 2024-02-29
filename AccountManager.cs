@@ -48,10 +48,10 @@ namespace phase_1
 
         }
 
-        public void SubmitAccountDeletionRequest(string username)
+        public void SubmitAccountDeletionRequest(Account account)
         {
             // Create a new account deletion request and submit it for admin approval
-            AccountDeletionRequest deletionRequest = new AccountDeletionRequest(username);
+            Account deletionRequest = account;
             accountDB.SaveAccountDeletionRequest(deletionRequest);
         }
 

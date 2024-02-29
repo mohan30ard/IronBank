@@ -19,6 +19,7 @@ namespace phase_1
             InitializeComponent();
             load_ui();
             this.main = main;
+            this.accountManager = accountManager;
         }
 
         private void load_ui()

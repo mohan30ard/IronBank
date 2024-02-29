@@ -38,38 +38,37 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(194, 142);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(146, 115);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 31);
+            this.label1.Size = new System.Drawing.Size(407, 37);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "\"Welcome to the Iron Bank\"";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(194, 227);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(146, 183);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 31);
+            this.label2.Size = new System.Drawing.Size(70, 26);
             this.label2.TabIndex = 1;
             this.label2.Text = "label2";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(194, 450);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(146, 363);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 31);
+            this.label3.Size = new System.Drawing.Size(70, 26);
             this.label3.TabIndex = 2;
             this.label3.Text = "label3";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(335, 325);
+            this.button1.Location = new System.Drawing.Point(251, 262);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(202, 46);
+            this.button1.Size = new System.Drawing.Size(152, 37);
             this.button1.TabIndex = 3;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -77,9 +76,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(335, 523);
+            this.button2.Location = new System.Drawing.Point(251, 422);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(202, 45);
+            this.button2.Size = new System.Drawing.Size(152, 36);
             this.button2.TabIndex = 4;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
@@ -87,16 +87,15 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 714);
+            this.ClientSize = new System.Drawing.Size(888, 576);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Main";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);

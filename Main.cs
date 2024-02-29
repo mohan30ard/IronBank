@@ -16,7 +16,6 @@ namespace phase_1
         public Main()
         {
             InitializeComponent();
-            load_ui();
         }
 
         private void load_ui()
@@ -42,7 +41,7 @@ namespace phase_1
 
         private void Main_Load(object sender, EventArgs e)
         {
-
+            load_ui();
         }
     }
 }
