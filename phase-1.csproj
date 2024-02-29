@@ -97,6 +97,9 @@
     <EmbeddedResource Include="AccountCreationRequest.resx">
       <DependentUpon>AccountCreationRequest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AccountDashboard.resx">
+      <DependentUpon>AccountDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AccountDeletionRequest.resx">
       <DependentUpon>AccountDeletionRequest.cs</DependentUpon>
     </EmbeddedResource>

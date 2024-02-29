@@ -35,8 +35,21 @@ namespace phase_1
             IsLocked = true;
         }
 
-        public Account()
+        public override string ToString()
         {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Account Number: " + AccountNumber);
+            sb.AppendLine("Name: " + Name);
+            sb.AppendLine("Address: " + Address);
+            sb.AppendLine("Email: " + Email);
+            sb.AppendLine("Phone Number: " + PhoneNumber);
+            sb.AppendLine("SSN: " + SSN);
+            sb.AppendLine("Username: " + Username);
+            sb.AppendLine("Balance: " + Balance);
+            sb.AppendLine("Is Locked: " + IsLocked);
+            
+            return sb.ToString();
         }
+
     }
 }

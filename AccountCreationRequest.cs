@@ -17,15 +17,8 @@ namespace phase_1
         public AccountCreationRequest(Main main, AccountManager accountManager)
         {
             InitializeComponent();
-            load_ui();
             this.main = main;
             this.accountManager = accountManager;
-        }
-
-        private void load_ui()
-        {
-            label1.Text = "Account Creation Request \n" +
-                "Please enter the following details";
         }
 
         private void AccountCreationForm_Load(object sender, EventArgs e)
@@ -51,8 +44,11 @@ namespace phase_1
 
             decimal initialBalance = decimal.Parse(textBox8.Text);
 
-            accountManager.CreateAccount(name, address, email, phoneNumber, ssn, password, initialBalance);
+            Account account = accountManager.CreateAccount(name, address, email, phoneNumber, ssn, password, initialBalance);
             
+            MessageBox.Show("Account Creation Request Submitted Successfully" +
+                "\n Please Contact to Approve your Account" +
+                "\nAccount Details" + accountManager.Display(account));
             this.Hide();
             main.Show();
 

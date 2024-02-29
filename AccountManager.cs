@@ -18,7 +18,12 @@ namespace phase_1
             this.accountDB = accountDB;
         }
 
-        public void CreateAccount(string name, string address, string email, string phoneNumber, long ssn, string password, decimal initialBalance)
+        public Dictionary<string, string> Users
+        {
+            get { return accountDB.Users; }
+        }
+
+        public Account CreateAccount(string name, string address, string email, string phoneNumber, long ssn, string password, decimal initialBalance)
         {
             // Generate a new account number
             int accountNumber = GenerateAccountNumber();
@@ -27,6 +32,14 @@ namespace phase_1
             Account newAccount = new Account(accountNumber, name, address, email, phoneNumber, ssn, userName, password, initialBalance);
             accountDB.SaveAccountDetails(newAccount);
             accountDB.SaveAccountCreationRequest(newAccount);
+            return newAccount;
+        }
+
+
+
+        public string Display(Account account)
+        {
+            return account.ToString();
         }
 
         private string GenerateUserName(string name,int accountNumber)
@@ -105,6 +118,69 @@ namespace phase_1
 
             generatedAccountNumbers.Add(newAccountNumber);
             return newAccountNumber;
+        }
+
+        private void RemoveAccountNumber(int accountNumber)
+        {
+            generatedAccountNumbers.Remove(accountNumber);
+        }
+
+        public void ApproveAccountCreationRequest(Account account)
+        {
+            // Approve account creation request
+            var existingAccount = accountDB.GetAccountCreationRequests().Find(acc => acc.AccountNumber == account.AccountNumber);
+            if (existingAccount != null)
+            {
+                accountDB.AddUser(existingAccount.Username, existingAccount.Password);
+                accountDB.UnLockAccount(existingAccount.AccountNumber);
+                accountDB.GetAccountCreationRequests().Remove(existingAccount);
+            }
+        }
+
+        public void RejectAccountCreationRequest(Account account)
+        {
+            // Reject account creation request
+            var existingAccount = accountDB.GetAccountCreationRequests().Find(acc => acc.AccountNumber == account.AccountNumber);
+            if (existingAccount != null)
+            {
+                accountDB.RemoveAccount(existingAccount.AccountNumber);
+                RemoveAccountNumber(existingAccount.AccountNumber);
+                accountDB.GetAccountCreationRequests().Remove(existingAccount);
+            }
+        }
+
+        public void ApproveAccountDeletionRequest(Account account)
+        {
+            // Approve account deletion request
+            var existingAccount = accountDB.GetAccountDeletionRequests().Find(acc => acc.AccountNumber == account.AccountNumber);
+            if (existingAccount != null)
+            {
+                accountDB.RemoveAccount(existingAccount.AccountNumber);
+                accountDB.RemoveUser(existingAccount.Username);
+                RemoveAccountNumber(existingAccount.AccountNumber);
+                accountDB.GetAccountDeletionRequests().Remove(existingAccount);
+            }
+        }
+
+        public void RejectAccountDeletionRequest(Account account)
+        {
+            // Reject account deletion request
+            var existingAccount = accountDB.GetAccountDeletionRequests().Find(acc => acc.AccountNumber == account.AccountNumber);
+            if (existingAccount != null)
+            {
+                accountDB.GetAccountDeletionRequests().Remove(existingAccount);
+            }
+        }
+
+        public bool IsAccountLocked(string userName)
+        {
+            // Check if account is locked
+            var existingAccount = accountDB.GetAccountDetails(userName);
+            if (existingAccount != null)
+            {
+                return existingAccount.IsLocked;
+            }
+            return false;
         }
     }
 }
