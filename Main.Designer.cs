@@ -126,7 +126,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::phase_1.Properties.Resources._1709182499915;
+            this.pictureBox3.Image = global::phase_1.Properties.Resources._dc28b977_0bcb_4d43_ae23_012b9ed7772f;
             this.pictureBox3.Location = new System.Drawing.Point(147, 18);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(60, 60);
@@ -163,7 +163,7 @@
             this.ClientSize = new System.Drawing.Size(929, 521);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";

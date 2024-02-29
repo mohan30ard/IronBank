@@ -83,6 +83,16 @@ namespace phase_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _dc28b977_0bcb_4d43_ae23_012b9ed7772f {
+            get {
+                object obj = ResourceManager.GetObject("_dc28b977-0bcb-4d43-ae23-012b9ed7772f", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_user__1_ {
             get {
                 object obj = ResourceManager.GetObject("add-user (1)", resourceCulture);
