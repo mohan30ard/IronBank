@@ -15,9 +15,9 @@ namespace phase_1
     {
         AccountLogin accountLogin;
         AccountManager accountManager;
-        bool ApprovalRequests;
-        bool DeletionRequests;
-        bool UpdateRequests;
+        bool approvalRequestsSelected = false;
+        bool deletionRequestsSelected = false;
+        bool updateRequestsSelected = false;
         public AdminDashboard(AccountLogin accountLogin, AccountManager accountManager)
         {
             InitializeComponent();
@@ -28,48 +28,96 @@ namespace phase_1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Approval Requests
-            ApprovalRequests = true;
-            listBox1.Items.Clear();
-            
-            accountManager.ApprovalRequests.ForEach(account =>
-            {
-                
-                listBox1.Items.Add(accountManager.AddtoListBox(account));
-            });
+            approvalRequestsSelected = true;
+            deletionRequestsSelected = false;
+            updateRequestsSelected = false;
+            RefreshListBox();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Deletion Requests
-            DeletionRequests = true;
-            listBox1.Items.Clear();
-            accountManager.DeletionRequests.ForEach(account =>
-            {
-                listBox1.Items.Add(accountManager.AddtoListBox(account));
-            });
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //view account details
-            listBox1.Items.Clear();
-            ViewAccounts viewAccounts = new ViewAccounts(this,accountManager);
-            viewAccounts.Show();
-            this.Hide();
-            
+            deletionRequestsSelected = true;
+            approvalRequestsSelected = false;
+            updateRequestsSelected = false;
+            RefreshListBox();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //update Account
-            UpdateRequests = true;
+            updateRequestsSelected = true;
+            approvalRequestsSelected = false;
+            deletionRequestsSelected = false;
+            RefreshListBox();
+        }
+
+        private void RefreshListBox()
+        {
             listBox1.Items.Clear();
-            List<Account> accounts = accountManager.Accounts;
-            accounts.ForEach(account =>
+            if (approvalRequestsSelected)
             {
-                listBox1.Items.Add(accountManager.AddtoListBox(account));
-            });
+                accountManager.ApprovalRequests.ForEach(account =>
+                {
+                    listBox1.Items.Add(accountManager.AddtoListBox(account));
+                });
+            }
+            else if (deletionRequestsSelected)
+            {
+                accountManager.DeletionRequests.ForEach(account =>
+                {
+                    listBox1.Items.Add(accountManager.AddtoListBox(account));
+                });
+            }
+            else if (updateRequestsSelected)
+            {
+                accountManager.Accounts.ForEach(account =>
+                {
+                    listBox1.Items.Add(accountManager.AddtoListBox(account));
+                });
+            }
+            else
+            {
+                MessageBox.Show("Please select an option from the list");
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                if (approvalRequestsSelected)
+                {
+                    Account selectedAccount = accountManager.ApprovalRequests[listBox1.SelectedIndex];
+                    AccountRequest account = new AccountRequest(this, accountManager, selectedAccount, "APPROVE");
+                    account.Show();
+                    Hide();
+                }
+                else if (deletionRequestsSelected)
+                {
+                    Account selectedAccount = accountManager.DeletionRequests[listBox1.SelectedIndex];
+                    AccountRequest account = new AccountRequest(this, accountManager, selectedAccount, "DELETE");
+                    account.Show();
+                    Hide();
+                }
+                else if (updateRequestsSelected)
+                {
+                    Account selectedAccount = accountManager.Accounts[listBox1.SelectedIndex];
+                    AccountRequest account = new AccountRequest(this, accountManager, selectedAccount, "UPDATE");
+                    account.Show();
+                    Hide();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an account from the list");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            ViewAccounts viewAccounts = new ViewAccounts(this, accountManager);
+            viewAccounts.Show();
+            Hide();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -78,80 +126,21 @@ namespace phase_1
             accountLogin.Show();
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            if (ApprovalRequests)
-            {
-                int selectedIndex = listBox1.SelectedIndex;
-                if (selectedIndex != -1)
-                {
-                    Account selectedAccount = accountManager.ApprovalRequests[selectedIndex];
-                    AccountRequest account = new AccountRequest(this, accountManager, selectedAccount);
-                    account.Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Please select an account from the list");
-                }
-            }
-            else if (DeletionRequests)
-            {
-                int selectedIndex = listBox1.SelectedIndex;
-                if (selectedIndex != -1)
-                {
-                    Account selectedAccount = accountManager.DeletionRequests[selectedIndex];
-                    AccountRequest account = new AccountRequest(this, accountManager, selectedAccount);
-                    account.Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Please select an account from the list");
-                }
-            }
-            else if (UpdateRequests)
-            {
-                int selectedIndex = listBox1.SelectedIndex;
-                if (selectedIndex != -1)
-                {
-                    Account selectedAccount = accountManager.Accounts[selectedIndex];
-                    AccountRequest account = new AccountRequest(this, accountManager, selectedAccount,"UPDATE");
-                    account.Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Please select an account from the list");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select an option from the list");
-            }
-            
-
-        }
-
         public void SetDefaultFlags()
         {
-            ApprovalRequests = false;
-            DeletionRequests = false;
-            UpdateRequests = false;
+            approvalRequestsSelected = false;
+            deletionRequestsSelected = false;
+            updateRequestsSelected = false;
+        }
 
-            if (ApprovalRequests)
-            {
-                DeletionRequests = false;
-                UpdateRequests = false;
-            }else if (DeletionRequests)
-            {
-                ApprovalRequests = false;
-                UpdateRequests = false;
-            }else if (UpdateRequests)
-            {
-                ApprovalRequests = false;
-                DeletionRequests = false;
-            }
+        private void AdminDashboard_Load(object sender, EventArgs e)
+        {
+            clearForm();
+        }
+
+        private void clearForm()
+        {
+            listBox1.Items.Clear();
         }
 
     }
