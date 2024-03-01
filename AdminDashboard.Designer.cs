@@ -131,6 +131,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AdminDashboard";
             this.Text = "AdminDashboard";
+            this.Load += new System.EventHandler(this.AdminDashboard_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

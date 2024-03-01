@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,41 +24,105 @@ namespace phase_1
 
         private void AccountCreationForm_Load(object sender, EventArgs e)
         {
+            ClearForm();
+        }
 
+        private void ClearForm()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+            textBox7.Text = "";
+            textBox8.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string name = textBox1.Text;
-
-            string address = textBox2.Text;
-
-            string email = textBox3.Text;
-
-            string phoneNumber = textBox4.Text;
-
-            long ssn = long.Parse(textBox5.Text);
-
+            string name = textBox1.Text.Trim();
+            string address = textBox2.Text.Trim();
+            string email = textBox3.Text.Trim();
+            string phoneNumber = textBox4.Text.Trim();
+            string ssnText = textBox5.Text.Trim();
             string password = textBox6.Text;
+            string confirmPassword = textBox7.Text;
+            string initialBalanceText = textBox8.Text.Trim();
 
-            string confirm_password = textBox7.Text;
+            // Validate name
+            if (string.IsNullOrEmpty(name))
+            {
+                MessageBox.Show("Please enter your name.");
+                return;
+            }
 
-            decimal initialBalance = decimal.Parse(textBox8.Text);
+            // Validate address
+            if (string.IsNullOrEmpty(address))
+            {
+                MessageBox.Show("Please enter your address.");
+                return;
+            }
 
+            // Validate email
+            if (string.IsNullOrEmpty(email) || !IsValidEmail(email))
+            {
+                MessageBox.Show("Please enter a valid email address.");
+                return;
+            }
+
+            // Validate phone number
+            if (string.IsNullOrEmpty(phoneNumber))
+            {
+                MessageBox.Show("Please enter a valid phone number.");
+                return;
+            }
+
+            // Validate SSN
+            if (!long.TryParse(ssnText, out long ssn) || ssnText.Length != 9)
+            {
+                MessageBox.Show("Please enter a valid 9-digit SSN number.");
+                return;
+            }
+
+            // Validate password and confirm password
+            if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || password != confirmPassword)
+            {
+                MessageBox.Show("Passwords do not match or are empty.");
+                return;
+            }
+
+            // Validate initial balance
+            if (!decimal.TryParse(initialBalanceText, out decimal initialBalance) || initialBalance < 0 || initialBalance > 1000)
+            {
+                MessageBox.Show("Please enter a valid initial balance between (0 - 1000)");
+                return;
+            }
+
+            // Create the account
             Account account = accountManager.CreateAccount(name, address, email, phoneNumber, ssn, password, initialBalance);
-            
+
             MessageBox.Show("Account Creation Request Submitted Successfully" +
                 "\n Please Contact to Approve your Account" +
                 "\nAccount Details" + accountManager.Display(account));
             Close();
             main.Show();
 
-    }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
             main.Show();
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            // Regular expression pattern for validating email addresses
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            // Check if the email matches the pattern
+            return Regex.IsMatch(email, pattern);
         }
     }
 }
