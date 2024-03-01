@@ -28,8 +28,6 @@ namespace phase_1
             LoadInputs();
         }
 
-        
-
         private void LoadInputs()
         {
             textBox1.Text = selectedAccount.Name;

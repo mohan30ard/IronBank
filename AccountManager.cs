@@ -88,38 +88,59 @@ namespace phase_1
             return accountDB.GetAccountDetails(userId);
         }
 
-        public void Deposit(int userId, decimal amount)
+        public Account GetAccount(string userName)
         {
             // Retrieve account details from the data access layer
-            var account = accountDB.GetAccountDetails(userId);
+            return accountDB.GetAccountDetails(userName);
+        }
+
+        public void Deposit(string userName, decimal amount)
+        {
+            // Deposit money into the account
+            var account = accountDB.GetAccountDetails(userName);
             if (account == null)
             {
                 throw new ApplicationException("Account not found.");
             }
 
-            // Perform deposit operation
             account.Balance += amount;
             accountDB.UpdateAccount(account);
         }
 
-        public void Withdraw(int userId, decimal amount)
+        public void Withdraw(string userName, decimal amount)
         {
-            
-            var account = accountDB.GetAccountDetails(userId);
+            // Withdraw money from the account
+            var account = accountDB.GetAccountDetails(userName);
             if (account == null)
             {
                 throw new ApplicationException("Account not found.");
             }
 
-            
-            if (account.Balance < amount)
-            {
-                throw new ApplicationException("Insufficient balance.");
-            }
-
-            
             account.Balance -= amount;
             accountDB.UpdateAccount(account);
+        }
+
+        public bool TransferFunds(Account sourceAccount, int destinationAccountNumber, decimal amount)
+        {
+            // Transfer funds from one account to another
+            var destinationAccount = accountDB.GetAccountDetails(destinationAccountNumber);
+            if (destinationAccount == null)
+            {
+                return false;
+            }
+
+            if (sourceAccount.Balance < amount)
+            {
+                return false;
+            }
+
+            sourceAccount.Balance -= amount;
+            destinationAccount.Balance += amount;
+
+            accountDB.UpdateAccount(sourceAccount);
+            accountDB.UpdateAccount(destinationAccount);
+
+            return true;
         }
 
         private int GenerateAccountNumber()

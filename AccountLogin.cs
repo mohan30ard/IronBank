@@ -26,7 +26,13 @@ namespace phase_1
 
         private void AccountLogin_Load(object sender, EventArgs e)
         {
+            ClearForm();
+        }
 
+        private void ClearForm()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,7 +53,7 @@ namespace phase_1
                 }
                 else
                 {
-                    AccountDashboard customerForm = new AccountDashboard();
+                    AccountDashboard customerForm = new AccountDashboard(this,accountManager,username);
                     customerForm.Show();
                 }
                 this.Hide();

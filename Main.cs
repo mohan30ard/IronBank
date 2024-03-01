@@ -42,6 +42,14 @@ namespace phase_1
         private void Main_Load(object sender, EventArgs e)
         {
             load_ui();
+            LoadDummies();
+        }
+
+        private void LoadDummies()
+        {
+            accountManager.CreateAccount("Alice Johnson", "789 Elm St", "alice.johnson@example.com", "111-222-3333", 787899098, "password789", 500.75m);
+            accountManager.CreateAccount("Jane Smith", "456 Oak St", "jane.smith@example.com", "987-654-3210", 987654321, "password456", 2500.50m);
+            accountManager.CreateAccount("Bob Johnson", "321 Pine St", "bob.johnson@example.com", "555-666-7777", 555666777, "passwordABC", 10000.00m);
         }
     }
 }
