@@ -168,7 +168,6 @@
             this.textBox2.Size = new System.Drawing.Size(158, 18);
             this.textBox2.TabIndex = 11;
             // 
-<<<<<<< HEAD
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
@@ -179,8 +178,6 @@
             this.textBox3.Size = new System.Drawing.Size(158, 18);
             this.textBox3.TabIndex = 12;
             // 
-=======
->>>>>>> f10241b9e122c397521893b440487825577a4297
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));

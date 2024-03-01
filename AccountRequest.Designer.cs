@@ -113,7 +113,6 @@
             this.textBox4.Size = new System.Drawing.Size(79, 13);
             this.textBox4.TabIndex = 32;
             // 
-<<<<<<< HEAD
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
@@ -125,8 +124,6 @@
             this.textBox3.Size = new System.Drawing.Size(79, 13);
             this.textBox3.TabIndex = 31;
             // 
-=======
->>>>>>> f10241b9e122c397521893b440487825577a4297
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
@@ -295,14 +292,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(663, 413);
-=======
-            this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1326, 795);
             this.Controls.Add(this.textBox3);
->>>>>>> f10241b9e122c397521893b440487825577a4297
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox6);
