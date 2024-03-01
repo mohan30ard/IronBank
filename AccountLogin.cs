@@ -38,7 +38,7 @@ namespace phase_1
             {
                 if (username == "admin")
                 {
-                    AdminDashboard adminDashboard = new AdminDashboard();
+                    AdminDashboard adminDashboard = new AdminDashboard(this, accountManager);
                     adminDashboard.Show();
                 }
                 else if(accountManager.IsAccountLocked(username))

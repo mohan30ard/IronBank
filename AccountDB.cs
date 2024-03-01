@@ -46,6 +46,11 @@ namespace phase_1
             return accounts.Find(acc => acc.AccountNumber == accountNumber);
         }
 
+        public List<Account> GetAccounts()
+        {
+            return accounts;
+        }
+
         public void SaveAccountCreationRequest(Account account)
         {
             creationRequests.Add(account);
@@ -73,7 +78,11 @@ namespace phase_1
             var existingAccount = accounts.Find(acc => acc.AccountNumber == account.AccountNumber);
             if (existingAccount != null)
             {
-                existingAccount.Balance = account.Balance;
+                existingAccount.Name = account.Name;
+                existingAccount.Address = account.Address;
+                existingAccount.Email = account.Email;
+                existingAccount.PhoneNumber = account.PhoneNumber;
+                existingAccount.SSN = account.SSN;
             }
         }
 

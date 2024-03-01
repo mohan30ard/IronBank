@@ -49,9 +49,15 @@ namespace phase_1
             MessageBox.Show("Account Creation Request Submitted Successfully" +
                 "\n Please Contact to Approve your Account" +
                 "\nAccount Details" + accountManager.Display(account));
-            this.Hide();
+            Close();
             main.Show();
 
     }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+            main.Show();
+        }
     }
 }

@@ -23,6 +23,11 @@ namespace phase_1
             get { return accountDB.Users; }
         }
 
+        public List<Account> Accounts
+        {
+            get { return accountDB.GetAccounts(); }
+        }
+
         public Account CreateAccount(string name, string address, string email, string phoneNumber, long ssn, string password, decimal initialBalance)
         {
             // Generate a new account number
@@ -35,11 +40,20 @@ namespace phase_1
             return newAccount;
         }
 
-
+        public void UpdateAccount(Account account)
+        {
+            accountDB.UpdateAccount(account);
+        }
 
         public string Display(Account account)
         {
             return account.ToString();
+        }
+
+        public string AddtoListBox(Account account)
+        {
+
+            return "Name : "+account.Name.ToString() +" - "+"Account Number : "+account.AccountNumber.ToString() +" - "+"User Name : "+ account.Username.ToString() +" - "+"Locked : "+ account.IsLocked.ToString();
         }
 
         private string GenerateUserName(string name,int accountNumber)
@@ -125,6 +139,16 @@ namespace phase_1
             generatedAccountNumbers.Remove(accountNumber);
         }
 
+        public List<Account> ApprovalRequests
+        {
+            get { return accountDB.GetAccountCreationRequests(); }
+        }
+
+        public List<Account> DeletionRequests
+        {
+            get { return accountDB.GetAccountDeletionRequests(); }
+        }
+
         public void ApproveAccountCreationRequest(Account account)
         {
             // Approve account creation request
@@ -181,6 +205,11 @@ namespace phase_1
                 return existingAccount.IsLocked;
             }
             return false;
+        }
+
+        public List<Account> GetAccounts()
+        {
+            return accountDB.GetAccounts();
         }
     }
 }
