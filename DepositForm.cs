@@ -15,7 +15,8 @@ namespace phase_1
         AccountDashboard accountDashboard;
         AccountManager accountManager;
         Account account;
-        public DepositForm(AccountDashboard accountDashboard,AccountManager accountManager,Account account)
+        TransactionManager  transactionManager;
+        public DepositForm(AccountDashboard accountDashboard,AccountManager accountManager,Account account, TransactionManager transactionManager)
         {
             InitializeComponent();
             this.accountDashboard = accountDashboard;
@@ -23,6 +24,7 @@ namespace phase_1
             this.account = account;
             accountNumber_input.Text = account.AccountNumber.ToString();
             currentBalance_input.Text = account.Balance.ToString();
+            this.transactionManager = transactionManager;
         }
 
         private void submit_button_Click(object sender, EventArgs e)
@@ -34,6 +36,9 @@ namespace phase_1
                 {
                     // Update the account balance and close the form
                     accountManager.Deposit(account.Username, depositAmount);
+                    DateTime transactionDate = DateTime.Now;
+                    Transaction transaction = new Transaction(account.AccountNumber, "Deposit", depositAmount, transactionDate);
+                    transactionManager.AddTransaction(transaction);
                     MessageBox.Show("Deposit successful. New balance: " + account.Balance);
                     Close();
                     accountDashboard.Show();

@@ -16,7 +16,7 @@ namespace phase_1
             AccountManager accountManager;
         Account account;
 
-        public FundsTransferForm(AccountDashboard accountDashboard, AccountManager accountManager , Account account)
+        public FundsTransferForm(AccountDashboard accountDashboard, AccountManager accountManager , Account account, TransactionManager transactionManager)
         {
             InitializeComponent();
             this.accountDashboard = accountDashboard;

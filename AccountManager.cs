@@ -12,6 +12,7 @@ namespace phase_1
 
         private static readonly Random random = new Random();
         private static List<int> generatedAccountNumbers = new List<int>();
+        static int transactionID = 1;
 
         public AccountManager(AccountDB accountDB)
         {
@@ -105,6 +106,8 @@ namespace phase_1
 
             account.Balance += amount;
             accountDB.UpdateAccount(account);
+            accountDB.SaveTransaction(new Transactions(transactionID, account.AccountNumber, "Deposit", amount, account.Balance.ToString())); 
+            transactionID++;
         }
 
         public void Withdraw(string userName, decimal amount)
@@ -118,6 +121,40 @@ namespace phase_1
 
             account.Balance -= amount;
             accountDB.UpdateAccount(account);
+            accountDB.SaveTransaction(new Transactions(transactionID, account.AccountNumber, "Withdraw", amount, account.Balance.ToString()));
+            transactionID++;
+        }
+
+        public bool TransferFunds(string sourceUserName, string destinationUserName, decimal amount)
+        {
+            // Transfer funds from one account to another
+            var sourceAccount = accountDB.GetAccountDetails(sourceUserName);
+            var destinationAccount = accountDB.GetAccountDetails(destinationUserName);
+            if (sourceAccount == null || destinationAccount == null)
+            {
+                return false;
+            }
+
+            if (sourceAccount.Balance < amount)
+            {
+                return false;
+            }
+
+            sourceAccount.Balance -= amount;
+            destinationAccount.Balance += amount;
+
+            accountDB.UpdateAccount(sourceAccount);
+            accountDB.UpdateAccount(destinationAccount);
+            accountDB.SaveTransaction(new Transactions(transactionID, sourceAccount.AccountNumber, "Transfer", amount, destinationAccount.AccountNumber.ToString()));
+            transactionID++;
+
+            return true;
+        }
+
+        //get transaction detials by account number
+        public List<Transactions> GetTransactions(int accountNumber)
+        {
+            return accountDB.GetTransactions().FindAll(acc => acc.AccountNumber == accountNumber);
         }
 
         public bool TransferFunds(Account sourceAccount, int destinationAccountNumber, decimal amount)
@@ -139,6 +176,8 @@ namespace phase_1
 
             accountDB.UpdateAccount(sourceAccount);
             accountDB.UpdateAccount(destinationAccount);
+            accountDB.SaveTransaction(new Transactions(transactionID, sourceAccount.AccountNumber, "Transfer", amount, destinationAccount.AccountNumber.ToString()));
+            transactionID++;
 
             return true;
         }

@@ -41,11 +41,12 @@ namespace phase_1
 
             if(mode == "UPDATE")
             {
-                textBox2.Enabled = true;    
+                textBox2.Enabled = true;
                 textBox3.Enabled = true;
                 textBox4.Enabled = true;
                 textBox7.Enabled = true;
                 button1.Text = "Update Account";
+
 
                 button2.Visible = false;
             }else

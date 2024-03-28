@@ -16,6 +16,18 @@ namespace phase_1
             {"admin", "admin123" },
             {"user", "user123" }
         };
+        private List<Transactions> transactions = new List<Transactions>();
+
+        public void SaveTransaction(Transactions transaction)
+        {
+            transactions.Add(transaction);
+        }
+
+        public List<Transactions> GetTransactions()
+        {
+            return transactions;
+        }
+
 
         public Dictionary<string, string> Users
         {

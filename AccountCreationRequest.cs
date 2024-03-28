@@ -16,7 +16,7 @@ namespace phase_1
     {
         Main main;
         AccountManager accountManager;
-        public AccountCreationRequest(Main main, AccountManager accountManager)
+        public AccountCreationRequest(Main main, AccountManager accountManager, TransactionManager transactionManager)
         {
             InitializeComponent();
             this.main = main;
@@ -66,7 +66,7 @@ namespace phase_1
             }
 
             // Validate email
-            if (string.IsNullOrEmpty(email) || !IsValidEmail(email))
+            if (string.IsNullOrEmpty(email) )
             {
                 MessageBox.Show("Please enter a valid email address.");
                 return;

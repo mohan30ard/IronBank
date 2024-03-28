@@ -15,13 +15,15 @@ namespace phase_1
         Main main;
         AccountManager accountManager;
         private Dictionary<string, string> users;
+        TransactionManager transactionManager;
         
-        public AccountLogin(Main main,AccountManager accountManager)
+        public AccountLogin(Main main,AccountManager accountManager, TransactionManager transactionManager)
         {
             InitializeComponent();
             this.main = main;
             this.accountManager = accountManager;
             users = accountManager.Users;
+            this.transactionManager = transactionManager;
         }
 
         private void AccountLogin_Load(object sender, EventArgs e)
@@ -44,7 +46,7 @@ namespace phase_1
             {
                 if (username == "admin")
                 {
-                    AdminDashboard adminDashboard = new AdminDashboard(this, accountManager);
+                    AdminDashboard adminDashboard = new AdminDashboard(this, accountManager, transactionManager);
                     adminDashboard.Show();
                 }
                 else if(accountManager.IsAccountLocked(username))
@@ -53,7 +55,7 @@ namespace phase_1
                 }
                 else
                 {
-                    AccountDashboard customerForm = new AccountDashboard(this,accountManager,username);
+                    AccountDashboard customerForm = new AccountDashboard(this,accountManager,username , transactionManager);
                     customerForm.Show();
                 }
                 this.Hide();

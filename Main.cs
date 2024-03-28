@@ -13,6 +13,7 @@ namespace phase_1
     public partial class Main : Form
     {
         AccountManager accountManager = new AccountManager(new AccountDB());
+        TransactionManager transactionManager = new TransactionManager(new TransactionDB());
         public Main()
         {
             InitializeComponent();
@@ -29,13 +30,13 @@ namespace phase_1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AccountCreationRequest accountCreationRequest = new AccountCreationRequest(this,accountManager);
+            AccountCreationRequest accountCreationRequest = new AccountCreationRequest(this,accountManager ,transactionManager);
             accountCreationRequest.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AccountLogin accountLogin = new AccountLogin(this, accountManager);
+            AccountLogin accountLogin = new AccountLogin(this, accountManager, transactionManager);
             accountLogin.Show();
         }
 

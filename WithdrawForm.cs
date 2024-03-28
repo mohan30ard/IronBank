@@ -15,7 +15,7 @@ namespace phase_1
         AccountDashboard accountDashboard;
         AccountManager accountManager;
         Account account;
-        public WithdrawForm(AccountDashboard accountDashboard, AccountManager accountManager,Account account)
+        public WithdrawForm(AccountDashboard accountDashboard, AccountManager accountManager,Account account, TransactionManager transactionManager)
         {
             InitializeComponent();
             this.accountDashboard = accountDashboard;
@@ -27,7 +27,7 @@ namespace phase_1
 
         private void WithdrawForm_Load(object sender, EventArgs e)
         {
-            ClearForm();
+            
         }
 
         private void ClearForm()

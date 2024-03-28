@@ -18,7 +18,7 @@ namespace phase_1
         bool approvalRequestsSelected = false;
         bool deletionRequestsSelected = false;
         bool updateRequestsSelected = false;
-        public AdminDashboard(AccountLogin accountLogin, AccountManager accountManager)
+        public AdminDashboard(AccountLogin accountLogin, AccountManager accountManager, TransactionManager transactionManager)
         {
             InitializeComponent();
             this.accountLogin = accountLogin;
@@ -143,5 +143,9 @@ namespace phase_1
             listBox1.Items.Clear();
         }
 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

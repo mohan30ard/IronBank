@@ -41,7 +41,9 @@
             // 
             // cancel_button
             // 
+            this.cancel_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancel_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.cancel_button.Location = new System.Drawing.Point(480, 421);
             this.cancel_button.Margin = new System.Windows.Forms.Padding(2);
             this.cancel_button.Name = "cancel_button";
@@ -53,7 +55,9 @@
             // 
             // submit_button
             // 
+            this.submit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submit_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submit_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.submit_button.Location = new System.Drawing.Point(218, 421);
             this.submit_button.Margin = new System.Windows.Forms.Padding(2);
             this.submit_button.Name = "submit_button";
@@ -65,16 +69,19 @@
             // 
             // deposit_input
             // 
+            this.deposit_input.BackColor = System.Drawing.Color.White;
+            this.deposit_input.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.deposit_input.Location = new System.Drawing.Point(480, 298);
             this.deposit_input.Margin = new System.Windows.Forms.Padding(2);
             this.deposit_input.Name = "deposit_input";
-            this.deposit_input.Size = new System.Drawing.Size(198, 31);
+            this.deposit_input.Size = new System.Drawing.Size(198, 24);
             this.deposit_input.TabIndex = 28;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label4.Location = new System.Drawing.Point(89, 292);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
@@ -84,18 +91,21 @@
             // 
             // currentBalance_input
             // 
+            this.currentBalance_input.BackColor = System.Drawing.Color.White;
+            this.currentBalance_input.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.currentBalance_input.Enabled = false;
             this.currentBalance_input.Location = new System.Drawing.Point(480, 191);
             this.currentBalance_input.Margin = new System.Windows.Forms.Padding(2);
             this.currentBalance_input.Name = "currentBalance_input";
             this.currentBalance_input.ReadOnly = true;
-            this.currentBalance_input.Size = new System.Drawing.Size(198, 31);
+            this.currentBalance_input.Size = new System.Drawing.Size(198, 24);
             this.currentBalance_input.TabIndex = 26;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label2.Location = new System.Drawing.Point(200, 185);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
@@ -105,18 +115,21 @@
             // 
             // accountNumber_input
             // 
+            this.accountNumber_input.BackColor = System.Drawing.Color.White;
+            this.accountNumber_input.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.accountNumber_input.Enabled = false;
             this.accountNumber_input.Location = new System.Drawing.Point(480, 107);
             this.accountNumber_input.Margin = new System.Windows.Forms.Padding(2);
             this.accountNumber_input.Name = "accountNumber_input";
             this.accountNumber_input.ReadOnly = true;
-            this.accountNumber_input.Size = new System.Drawing.Size(198, 31);
+            this.accountNumber_input.Size = new System.Drawing.Size(198, 24);
             this.accountNumber_input.TabIndex = 24;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label3.Location = new System.Drawing.Point(190, 101);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
@@ -136,6 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(949, 576);
             this.Controls.Add(this.cancel_button);
             this.Controls.Add(this.submit_button);
@@ -147,6 +161,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Name = "DepositForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DepositForm";
             this.Load += new System.EventHandler(this.DepositForm_Load);
             this.ResumeLayout(false);

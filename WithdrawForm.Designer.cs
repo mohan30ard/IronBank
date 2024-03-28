@@ -41,7 +41,9 @@
             // 
             // cancel_button
             // 
+            this.cancel_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancel_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.cancel_button.Location = new System.Drawing.Point(465, 410);
             this.cancel_button.Margin = new System.Windows.Forms.Padding(2);
             this.cancel_button.Name = "cancel_button";
@@ -53,7 +55,9 @@
             // 
             // submit_button
             // 
+            this.submit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submit_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submit_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.submit_button.Location = new System.Drawing.Point(203, 410);
             this.submit_button.Margin = new System.Windows.Forms.Padding(2);
             this.submit_button.Name = "submit_button";
@@ -75,6 +79,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label4.Location = new System.Drawing.Point(74, 281);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
@@ -96,6 +101,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label2.Location = new System.Drawing.Point(185, 174);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
@@ -117,6 +123,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label3.Location = new System.Drawing.Point(175, 90);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
@@ -136,6 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(886, 559);
             this.Controls.Add(this.cancel_button);
             this.Controls.Add(this.submit_button);
@@ -146,7 +154,9 @@
             this.Controls.Add(this.accountNumber_input);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "WithdrawForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WithdrawForm";
             this.Load += new System.EventHandler(this.WithdrawForm_Load);
             this.ResumeLayout(false);
